@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - {{ SITENAME }}{% endblock %}
+
+{% block description %}{{ article.summary|striptags }}{% endblock %}
+
+{% block body_class %}blog-details-page{% endblock %}
+
+{% block content %}
+<!-- Page Title -->
+<div class="page-title light-background">
+  <div class="container">
+    <h1>{{ article.title }}</h1>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a href="{{ SITEURL }}/">Home</a></li>
+        <li><a href="{{ SITEURL }}/index.html">News</a></li>
+        <li class="current">{{ article.title }}</li>
+      </ol>
+    </nav>
+  </div>
+</div><!-- End Page Title -->
+
+<!-- Blog Details Section -->
+<section id="blog-details" class="blog-details section">
+  <div class="container">
+
+    <article class="article">
+
+      {% if article.featured_image %}
+      <div class="post-img">
+        <img src="{{ SITEURL }}/{{ article.featured_image }}" alt="{{ article.title }}" class="img-fluid">
+      </div>
+      {% endif %}
+
+      <h2 class="title">{{ article.title }}</h2>
+
+      <div class="meta-top">
+        <ul>
+          <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="{{ SITEURL }}/author/{{ article.author|lower|replace(' ', '-') }}.html">{{ article.author }}</a></li>
+          <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time></li>
+          {% if article.category %}
+          <li class="d-flex align-items-center"><i class="bi bi-folder2"></i> <a href="{{ SITEURL }}/category/{{ article.category|lower }}.html">{{ article.category }}</a></li>
+          {% endif %}
+        </ul>
+      </div><!-- End meta top -->
+
+      <div class="content">
+        {{ article.content }}
+      </div><!-- End post content -->
+
+      {% if article.tags %}
+      <div class="meta-bottom">
+        <i class="bi bi-tags"></i>
+        <ul class="tags">
+          {% for tag in article.tags %}
+          <li><a href="{{ SITEURL }}/tag/{{ tag|lower }}.html">{{ tag }}</a></li>
+          {% endfor %}
+        </ul>
+      </div><!-- End meta bottom -->
+      {% endif %}
+
+    </article>
+
+  </div>
+</section><!-- /Blog Details Section -->
+
+{% endblock %}
