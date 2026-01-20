@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - News{% endblock %}
+
+{% block body_class %}index-page{% endblock %}
+
+{% block content %}
+<!-- Page Banner -->
+<section class="page-banner dark-background">
+  <div class="background-overlay"></div>
+  <div class="container">
+    <div class="banner-content text-center">
+      <h1>News</h1>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="{{ SITEURL }}/">Home</a></li>
+          <li class="current">News</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section><!-- End Page Banner -->
+
+<!-- Blog Posts Section -->
+<section id="blog-posts" class="blog-posts section">
+
+  <div class="container">
+
+    <div class="row gy-4">
+
+      {% for article in articles_page.object_list %}
+      <div class="col-lg-4">
+        <article>
+
+          {% if article.featured_image %}
+          <div class="post-img">
+            <img src="{{ SITEURL }}/{{ article.featured_image }}" alt="{{ article.title }}" class="img-fluid">
+          </div>
+          {% endif %}
+
+          <p class="post-category">{{ article.category }}</p>
+
+          <h2 class="title">
+            <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+          </h2>
+
+          <div class="d-flex align-items-center">
+            <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+            <div class="post-meta">
+              <p class="post-author">{{ article.author }}</p>
+              <p class="post-date">
+                <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+              </p>
+            </div>
+          </div>
+
+        </article>
+      </div><!-- End post list item -->
+      {% endfor %}
+
+    </div>
+
+    {% if articles_page.has_other_pages() %}
+    <!-- Pagination -->
+    <div class="pagination d-flex justify-content-center mt-5">
+      <ul>
+        {% if articles_page.has_previous() %}
+        <li><a href="{{ SITEURL }}/{{ articles_previous_page.url }}">«</a></li>
+        {% endif %}
+        
+        {% for num in range(1, articles_paginator.num_pages + 1) %}
+          {% if num == articles_page.number %}
+          <li><a href="#" class="active">{{ num }}</a></li>
+          {% else %}
+          <li><a href="{{ SITEURL }}/{% if num > 1 %}index{{ num }}.html{% else %}index.html{% endif %}">{{ num }}</a></li>
+          {% endif %}
+        {% endfor %}
+        
+        {% if articles_page.has_next() %}
+        <li><a href="{{ SITEURL }}/{{ articles_next_page.url }}">»</a></li>
+        {% endif %}
+      </ul>
+    </div><!-- End Pagination -->
+    {% endif %}
+
+  </div>
+
+</section><!-- /Blog Posts Section -->
+
+{% endblock %}

@@ -1,0 +1,12 @@
+[[redirects]]
+  from = "/blog/*"
+  to = "https://blog.zimbabwe-running-show.netlify.app/:splat"
+  status = 301
+  force = true
+
+[build]
+  command = "make publish"
+  publish = "output"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
