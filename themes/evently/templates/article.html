@@ -7,19 +7,22 @@
 {% block body_class %}blog-details-page{% endblock %}
 
 {% block content %}
-<!-- Page Title -->
-<div class="page-title light-background">
+<!-- Page Banner -->
+<section class="page-banner dark-background">
+  <div class="background-overlay"></div>
   <div class="container">
-    <h1>{{ article.title }}</h1>
-    <nav class="breadcrumbs">
-      <ol>
-        <li><a href="{{ SITEURL }}/">Home</a></li>
-        <li><a href="{{ SITEURL }}/news.html">News</a></li>
-        <li class="current">{{ article.title }}</li>
-      </ol>
-    </nav>
+    <div class="banner-content text-center">
+      <h1>{{ article.title }}</h1>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="{{ SITEURL }}/">Home</a></li>
+          <li><a href="{{ SITEURL }}/news.html">News</a></li>
+          <li class="current">{{ article.title }}</li>
+        </ol>
+      </nav>
+    </div>
   </div>
-</div><!-- End Page Title -->
+</section><!-- End Page Banner -->
 
 <!-- Blog Details Section -->
 <section id="blog-details" class="blog-details section">

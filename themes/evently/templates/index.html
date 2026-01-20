@@ -5,18 +5,21 @@
 {% block body_class %}index-page{% endblock %}
 
 {% block content %}
-<!-- Page Title -->
-<div class="page-title light-background">
+<!-- Page Banner -->
+<section class="page-banner dark-background">
+  <div class="background-overlay"></div>
   <div class="container">
-    <h1>News</h1>
-    <nav class="breadcrumbs">
-      <ol>
-        <li><a href="{{ SITEURL }}/">Home</a></li>
-        <li class="current">News</li>
-      </ol>
-    </nav>
+    <div class="banner-content text-center">
+      <h1>News</h1>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="{{ SITEURL }}/">Home</a></li>
+          <li class="current">News</li>
+        </ol>
+      </nav>
+    </div>
   </div>
-</div><!-- End Page Title -->
+</section><!-- End Page Banner -->
 
 <!-- Blog Posts Section -->
 <section id="blog-posts" class="blog-posts section">
