@@ -27,6 +27,9 @@ ARTICLE_URL = '{date:%Y}/{slug}.html'
 PAGE_SAVE_AS = 'pages/{slug}.html'
 PAGE_URL = 'pages/{slug}.html'
 
+# Use static page as home page
+INDEX_SAVE_AS = 'news.html'
+
 # Static paths
 STATIC_PATHS = ['images', 'extra']
 

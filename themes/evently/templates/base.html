@@ -38,10 +38,10 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{{ SITEURL }}/" class="{% if output_file == 'index.html' %}active{% endif %}">Home</a></li>
-          <li><a href="{{ SITEURL }}/pages/about.html">About</a></li>
-          <li><a href="{{ SITEURL }}/index.html">News</a></li>
-          <li><a href="{{ SITEURL }}/pages/contact.html">Contact</a></li>
+          <li><a href="{{ SITEURL }}/" class="{% if page and page.slug == 'home' %}active{% endif %}">Home</a></li>
+          <li><a href="{{ SITEURL }}/pages/about.html" class="{% if page and page.slug == 'about' %}active{% endif %}">About</a></li>
+          <li><a href="{{ SITEURL }}/news.html" class="{% if output_file == 'news.html' %}active{% endif %}">News</a></li>
+          <li><a href="{{ SITEURL }}/pages/contact.html" class="{% if page and page.slug == 'contact' %}active{% endif %}">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -79,7 +79,7 @@
             <ul>
               <li><a href="{{ SITEURL }}/">Home</a></li>
               <li><a href="{{ SITEURL }}/pages/about.html">About</a></li>
-              <li><a href="{{ SITEURL }}/index.html">News</a></li>
+              <li><a href="{{ SITEURL }}/news.html">News</a></li>
               <li><a href="{{ SITEURL }}/pages/contact.html">Contact</a></li>
             </ul>
           </div>
